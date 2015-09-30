@@ -7,6 +7,7 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
+#import <CoreLocation/CoreLocation.h>
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 
@@ -20,6 +21,7 @@ static NSString *exploreAPI = @"https://api.foursquare.com/v2/venues/explore";
 @interface MasterViewController ()
 
 @property NSMutableArray *objects;
+@property NSMutableArray *venues;
 @end
 
 @implementation MasterViewController
@@ -47,6 +49,8 @@ static NSString *exploreAPI = @"https://api.foursquare.com/v2/venues/explore";
     //NSString *latlon = @"-37.85,145.10"; // 20 Hughes Street Burwood VIC 3125
     NSString *section = @"coffee";
     
+    self.venues = [[NSMutableArray alloc] init];
+    
     NSString *string = [NSString stringWithFormat:@"%@?client_id=%@&client_secret=%@&v=20150930&m=foursquare&ll=%@&section=%@&venuePhotos=1&sortByDistance=1&openNow=1", exploreAPI, kCLIENTID, kCLIENTSECRET, latlon, section];
     NSLog(@"exploreURL is %@", string);
     NSURL *url = [NSURL URLWithString:string];
@@ -70,6 +74,36 @@ static NSString *exploreAPI = @"https://api.foursquare.com/v2/venues/explore";
         for (NSDictionary* result in resultList) {
             NSDictionary *venue = [result objectForKey:@"venue"];
             NSLog(@"venue name = %@", [venue objectForKey:@"name"]);
+            NSString *name = [venue objectForKey:@"name"];
+            NSDictionary *location = [venue objectForKey:@"location"];
+            NSString *address = [NSString stringWithFormat:@"%@, %@ %@ %@", [location objectForKey:@"address"], [location objectForKey:@"city"], [location objectForKey:@"state"], [location objectForKey:@"postalCode"]];
+            NSString *distance = [location objectForKey:@"distance"];
+            NSInteger intDistance = [distance intValue];
+            CLLocationDegrees lat = [[location objectForKey:@"lat"] doubleValue];
+            CLLocationDegrees lng = [[location objectForKey:@"lng"] doubleValue];
+            //CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(lat, lng);
+            CLLocation *coordinate = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
+//            To get the CLLocationCoordinate struct back from CLLocation, call coordinate on the object.
+//            
+//            CLLocationCoordinate2D coord = [[currentDisplayedTowers lastObject] coordinate];
+            
+            NSLog(@"location: distance=%ldm lat=%f, lng=%f address = %@", (long)intDistance, lat, lng, address);
+            
+            //get the photos link for cafe
+            NSDictionary *featuredPhotos = [venue objectForKey:@"featuredPhotos"];
+            NSArray *itemsReturned = [featuredPhotos objectForKey:@"items"];
+            NSDictionary *photos = [itemsReturned objectAtIndex:0];
+            NSString *photosLink = [NSString stringWithFormat:@"%@%@x%@%@", [photos objectForKey:@"prefix"], [photos objectForKey:@"width"], [photos objectForKey:@"height"], [photos objectForKey:@"suffix"]];
+            NSLog(@"photos link=%@", photosLink);
+            
+            NSMutableDictionary *venueLocal = [[NSMutableDictionary alloc] init];
+            [venueLocal setObject:name  forKey:@"name"];
+            [venueLocal setObject:distance forKey:@"distance"];
+            [venueLocal setObject:address forKey:@"address"];
+            [venueLocal setObject:coordinate forKey:@"coordinate"];
+            [venueLocal setObject:photosLink forKey:@"photoLink"];
+            [self.venues addObject:venueLocal];
+            
         }
         
         //Extracting out the venues array from the list and put into new array
@@ -82,8 +116,8 @@ static NSString *exploreAPI = @"https://api.foursquare.com/v2/venues/explore";
 
         
 //        self.weather = (NSDictionary *)responseObject;
-//        self.title = @"JSON Retrieved";
-//        [self.tableView reloadData];
+          self.title = @"JSON Retrieved";
+          [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -132,14 +166,45 @@ static NSString *exploreAPI = @"https://api.foursquare.com/v2/venues/explore";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
+    return self.venues.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    //NSDate *object = self.objects[indexPath.row];
+    cell.textLabel.text = [[self.venues objectAtIndex:indexPath.row] objectForKey:@"name"];
+    
+    NSString *photoLink = [[self.venues objectAtIndex:indexPath.row] objectForKey:@"photoLink"];
+    NSURL *photoURL = [NSURL URLWithString:photoLink];
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(queue, ^{
+        
+        // Request the image
+        NSData *imageData = [NSData dataWithContentsOfURL:photoURL];
+        
+        if (imageData != nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // 4. Set image in cell
+                CGSize itemSize = CGSizeMake(32, 32);
+                UIGraphicsBeginImageContext(itemSize);
+                
+                UIImage *thumbnail = [UIImage imageWithData:imageData];
+                CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+                [thumbnail drawInRect:imageRect];
+                
+                // set round corner
+                cell.imageView.layer.masksToBounds = YES;
+                cell.imageView.layer.cornerRadius = 10.0;
+                cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+                [cell setNeedsLayout];
+            });
+        }
+    });
+
     return cell;
 }
 
