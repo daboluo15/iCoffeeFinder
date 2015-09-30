@@ -154,8 +154,14 @@ static NSString *exploreAPI = @"https://api.foursquare.com/v2/venues/explore";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        //NSDate *object = self.objects[indexPath.row];
+        NSDictionary *object = self.venues[indexPath.row];
+        
+        DetailViewController* detailedViewController = [segue destinationViewController];
+        detailedViewController.detailedImageLink = [object objectForKey:@"photoLink"];
+        detailedViewController.detailedAddress = [object objectForKey:@"address"];
+        detailedViewController.coordinate = [[object objectForKey:@"coordinate"] coordinate];
+        detailedViewController.shopName = [object objectForKey:@"name"];
     }
 }
 
