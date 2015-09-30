@@ -51,8 +51,8 @@ CLLocationManager *locationManager;
         [locationManager requestWhenInUseAuthorization];
     }
     
-    // update location every 200 m
-    locationManager.distanceFilter = 200;
+    // update location every 600 m
+    locationManager.distanceFilter = 600;
     [locationManager startUpdatingLocation];
 }
 
