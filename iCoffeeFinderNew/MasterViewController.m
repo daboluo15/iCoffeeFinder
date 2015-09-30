@@ -46,8 +46,11 @@ CLLocationManager *locationManager;
     
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager requestWhenInUseAuthorization];
-    [locationManager requestAlwaysAuthorization];
+    // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
+    }
+    
     // update location every 500 m
     locationManager.distanceFilter = 500;
     [locationManager startUpdatingLocation];
