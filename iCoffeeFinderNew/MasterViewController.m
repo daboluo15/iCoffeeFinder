@@ -22,9 +22,12 @@ static NSString *exploreAPI = @"https://api.foursquare.com/v2/venues/explore";
 
 @property NSMutableArray *objects;
 @property NSMutableArray *venues;
+@property NSString *currentCoordinate;
 @end
 
 @implementation MasterViewController
+
+CLLocationManager *locationManager;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -37,6 +40,39 @@ static NSString *exploreAPI = @"https://api.foursquare.com/v2/venues/explore";
 //
 //    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
 //    self.navigationItem.rightBarButtonItem = addButton;
+    
+    self.currentCoordinate = @"-37.881199,145.163190"; // 95 Kingsway, Glen Waverley VIC 3150
+    locationManager = [[CLLocationManager alloc] init];
+    
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager requestWhenInUseAuthorization];
+    [locationManager requestAlwaysAuthorization];
+    // update location every 500 m
+    locationManager.distanceFilter = 500;
+    [locationManager startUpdatingLocation];
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"didUpdateToLocation: %@", newLocation);
+    CLLocation *currentLocation = newLocation;
+    
+    if (currentLocation != nil) {
+        //longitudeLabel.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+        //latitudeLabel.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+        self.currentCoordinate = [NSString stringWithFormat:@"%f,%f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude];
+    }
     [self loadJsonVenues];
 }
 
@@ -45,7 +81,14 @@ static NSString *exploreAPI = @"https://api.foursquare.com/v2/venues/explore";
     //
     //    "\(exploreAPI)?client_id=\(clientId)&client_secret=\(clientSecret)&v=\(version)&m=\(method)&ll=\(latLong)&section=\(exploreSection)&venuePhotos=\(venuePhotos)&sortByDistance=\(sortByDistance)&openNow=\(openNow)"
     
-    NSString *latlon = @"-37.881199,145.163190"; // 95 Kingsway, Glen Waverley VIC 3150
+    //NSString *latlon = @"-37.881199,145.163190"; // 95 Kingsway, Glen Waverley VIC 3150
+    NSString *latlon;
+    if (self.currentCoordinate == nil) {
+        latlon = @"-37.881199,145.163190"; // 95 Kingsway, Glen Waverley VIC 3150
+    }else {
+        latlon = [NSString stringWithString:self.currentCoordinate];
+    }
+    
     //NSString *latlon = @"-37.85,145.10"; // 20 Hughes Street Burwood VIC 3125
     NSString *section = @"coffee";
     
