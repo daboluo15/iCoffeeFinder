@@ -174,6 +174,8 @@ static NSString *exploreAPI = @"https://api.foursquare.com/v2/venues/explore";
 
     //NSDate *object = self.objects[indexPath.row];
     cell.textLabel.text = [[self.venues objectAtIndex:indexPath.row] objectForKey:@"name"];
+    NSString *addressAndDistance = [NSString stringWithFormat:@"%@    %@m", [[self.venues objectAtIndex:indexPath.row] objectForKey:@"address"], [[self.venues objectAtIndex:indexPath.row] objectForKey:@"distance"]];
+    cell.detailTextLabel.text = addressAndDistance;
     
     NSString *photoLink = [[self.venues objectAtIndex:indexPath.row] objectForKey:@"photoLink"];
     NSURL *photoURL = [NSURL URLWithString:photoLink];
