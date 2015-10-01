@@ -74,10 +74,27 @@
     self.addressLabel.text = self.detailedAddress;
     self.title = self.shopName;
 
+    // Add tap to detailed mapview
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:nil];
+    doubleTap.numberOfTapsRequired = 2;
+    doubleTap.numberOfTouchesRequired = 1;
+    [self.mapView addGestureRecognizer:doubleTap];
     
-    
-    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+    [singleTap requireGestureRecognizerToFail: doubleTap];
+    [self.mapView addGestureRecognizer:singleTap];
 }
+
+- (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state != UIGestureRecognizerStateEnded)
+        return;
+    [self performSegueWithIdentifier:@"detailedMap" sender:self];
+
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -18,6 +18,7 @@
 		AB43EE791BBB568B0014ADFF /* iCoffeeFinderNewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB43EE781BBB568B0014ADFF /* iCoffeeFinderNewTests.m */; };
 		AB43EE831BBBA30A0014ADFF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB43EE821BBBA30A0014ADFF /* MapKit.framework */; };
 		AB43EE851BBBACDE0014ADFF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB43EE841BBBACDE0014ADFF /* CoreLocation.framework */; };
+		ABC71EB11BBCB0B8005D902E /* BigMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC71EB01BBCB0B8005D902E /* BigMapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		AB43EE781BBB568B0014ADFF /* iCoffeeFinderNewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iCoffeeFinderNewTests.m; sourceTree = "<group>"; };
 		AB43EE821BBBA30A0014ADFF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AB43EE841BBBACDE0014ADFF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		ABC71EAF1BBCB0B8005D902E /* BigMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigMapViewController.h; sourceTree = "<group>"; };
+		ABC71EB01BBCB0B8005D902E /* BigMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigMapViewController.m; sourceTree = "<group>"; };
 		B88D4456554A775D54841896 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B919CB5DDA5FA4E8F758710D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +117,8 @@
 				AB43EE631BBB568B0014ADFF /* DetailViewController.h */,
 				AB43EE641BBB568B0014ADFF /* DetailViewController.m */,
 				AB43EE661BBB568B0014ADFF /* Main.storyboard */,
+				ABC71EAF1BBCB0B8005D902E /* BigMapViewController.h */,
+				ABC71EB01BBCB0B8005D902E /* BigMapViewController.m */,
 				AB43EE691BBB568B0014ADFF /* Images.xcassets */,
 				AB43EE6B1BBB568B0014ADFF /* LaunchScreen.xib */,
 				AB43EE591BBB568B0014ADFF /* Supporting Files */,
@@ -294,6 +299,7 @@
 				AB43EE5F1BBB568B0014ADFF /* AppDelegate.m in Sources */,
 				AB43EE621BBB568B0014ADFF /* MasterViewController.m in Sources */,
 				AB43EE5C1BBB568B0014ADFF /* main.m in Sources */,
+				ABC71EB11BBCB0B8005D902E /* BigMapViewController.m in Sources */,
 				AB43EE651BBB568B0014ADFF /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

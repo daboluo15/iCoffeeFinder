@@ -121,11 +121,62 @@
                         <outlet property="addressLabel" destination="Emg-c9-JAT" id="YQM-aO-tOl"/>
                         <outlet property="imageView" destination="c6d-2b-ikP" id="y0O-af-Nr8"/>
                         <outlet property="mapView" destination="g7R-qT-R77" id="sh5-ze-0Qm"/>
+                        <segue destination="9VA-E6-RVv" kind="show" identifier="detailedMap" id="qZy-cA-Wda"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1343" y="64"/>
+        </scene>
+        <!--Big Map View Controller-->
+        <scene sceneID="TFz-19-Nuk">
+            <objects>
+                <viewController id="9VA-E6-RVv" customClass="BigMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MaB-oC-UTp"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vkt-0C-moy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RHD-Ws-JOb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cMc-82-0kF">
+                                <rect key="frame" x="0.0" y="64" width="605" height="553"/>
+                            </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="khS-yX-3ee">
+                                <rect key="frame" x="166" y="64" width="269" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="269" id="xAP-wA-kll"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Map"/>
+                                    <segment title="Hybrid"/>
+                                    <segment title="Satellite"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeMapStyle:" destination="9VA-E6-RVv" eventType="valueChanged" id="IQg-6T-YDe"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="khS-yX-3ee" firstAttribute="top" secondItem="cMc-82-0kF" secondAttribute="top" id="S5Q-Gm-73U"/>
+                            <constraint firstItem="khS-yX-3ee" firstAttribute="centerX" secondItem="RHD-Ws-JOb" secondAttribute="centerX" id="YX0-2k-80O"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cMc-82-0kF" secondAttribute="trailing" constant="-21" id="cf3-bd-Vf0"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="cMc-82-0kF" secondAttribute="bottom" constant="-17" id="eCb-ZU-paG"/>
+                            <constraint firstItem="cMc-82-0kF" firstAttribute="top" secondItem="MaB-oC-UTp" secondAttribute="bottom" id="h4u-0a-pbf"/>
+                            <constraint firstItem="cMc-82-0kF" firstAttribute="leading" secondItem="RHD-Ws-JOb" secondAttribute="leading" id="vpW-6I-KMh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapTypeSegmentedControl" destination="khS-yX-3ee" id="egj-cr-yg5"/>
+                        <outlet property="mapView" destination="cMc-82-0kF" id="8z9-nc-CfE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5q6-84-Mz5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2029" y="64"/>
         </scene>
     </scenes>
 </document>
