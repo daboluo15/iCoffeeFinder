@@ -63,6 +63,8 @@ CLLocationManager *locationManager;
         [self.sidebarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+    
+    [self loadJsonVenues];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -102,11 +104,12 @@ CLLocationManager *locationManager;
     }
     
     //NSString *latlon = @"-37.85,145.10"; // 20 Hughes Street Burwood VIC 3125
-    NSString *section = @"coffee";
+    //NSString *section = @"coffee";
+    NSLog(@"self.venueSection = %@", self.venueSection);
     
     self.venues = [[NSMutableArray alloc] init];
     
-    NSString *string = [NSString stringWithFormat:@"%@?client_id=%@&client_secret=%@&v=20150930&m=foursquare&ll=%@&section=%@&venuePhotos=1&sortByDistance=1&openNow=1", exploreAPI, kCLIENTID, kCLIENTSECRET, latlon, section];
+    NSString *string = [NSString stringWithFormat:@"%@?client_id=%@&client_secret=%@&v=20150930&m=foursquare&ll=%@&section=%@&venuePhotos=1&sortByDistance=1&openNow=1", exploreAPI, kCLIENTID, kCLIENTSECRET, latlon, self.venueSection];
     NSLog(@"exploreURL is %@", string);
     NSURL *url = [NSURL URLWithString:string];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

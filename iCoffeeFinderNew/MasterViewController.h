@@ -12,6 +12,7 @@
 @interface MasterViewController : UITableViewController <CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (nonatomic) NSString *venueSection;
 
 @end
 

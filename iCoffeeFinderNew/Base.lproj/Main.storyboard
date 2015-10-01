@@ -68,6 +68,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="R8M-AK-Fr8" kind="custom" identifier="showVenue" customClass="SWRevealViewControllerSeguePushController" id="rMb-vg-vzk"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="coffee" id="9sv-Df-7NT">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -86,6 +89,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="R8M-AK-Fr8" kind="custom" identifier="showVenue" customClass="SWRevealViewControllerSeguePushController" id="WAA-wU-A9Y"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="drinks" id="87a-0J-TdU">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -104,6 +110,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="R8M-AK-Fr8" kind="custom" identifier="showVenue" customClass="SWRevealViewControllerSeguePushController" id="FOs-hi-twk"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -115,7 +124,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnh-bS-IIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-148" y="-605"/>
+            <point key="canvasLocation" x="-148" y="-515"/>
         </scene>
         <!--Master-->
         <scene sceneID="VgW-fR-Quf">
@@ -169,7 +178,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="615" y="136"/>
+            <point key="canvasLocation" x="619" y="157"/>
         </scene>
         <!--Detail-->
         <scene sceneID="Cn3-H9-jdl">
@@ -296,11 +305,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fO6-Ls-Zxz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-148" y="136"/>
+            <point key="canvasLocation" x="-23" y="157"/>
         </scene>
     </scenes>
     <resources>
         <image name="free-vector-coffee-icon" width="522" height="600"/>
         <image name="menu" width="22" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="FOs-hi-twk"/>
+    </inferredMetricsTieBreakers>
 </document>
