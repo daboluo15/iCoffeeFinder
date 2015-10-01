@@ -11,6 +11,7 @@
 
 @interface MasterViewController : UITableViewController <CLLocationManagerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
 @end
 

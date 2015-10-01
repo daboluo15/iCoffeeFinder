@@ -19,6 +19,8 @@
 		AB43EE831BBBA30A0014ADFF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB43EE821BBBA30A0014ADFF /* MapKit.framework */; };
 		AB43EE851BBBACDE0014ADFF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB43EE841BBBACDE0014ADFF /* CoreLocation.framework */; };
 		ABC71EB11BBCB0B8005D902E /* BigMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC71EB01BBCB0B8005D902E /* BigMapViewController.m */; };
+		ABC71EB51BBD00DA005D902E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC71EB41BBD00DA005D902E /* SWRevealViewController.m */; };
+		ABC71EB81BBD0551005D902E /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC71EB71BBD0551005D902E /* MenuTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,10 @@
 		AB43EE841BBBACDE0014ADFF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ABC71EAF1BBCB0B8005D902E /* BigMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigMapViewController.h; sourceTree = "<group>"; };
 		ABC71EB01BBCB0B8005D902E /* BigMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigMapViewController.m; sourceTree = "<group>"; };
+		ABC71EB31BBD00DA005D902E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		ABC71EB41BBD00DA005D902E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		ABC71EB61BBD0551005D902E /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
+		ABC71EB71BBD0551005D902E /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
 		B88D4456554A775D54841896 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B919CB5DDA5FA4E8F758710D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,9 +123,12 @@
 				AB43EE631BBB568B0014ADFF /* DetailViewController.h */,
 				AB43EE641BBB568B0014ADFF /* DetailViewController.m */,
 				AB43EE661BBB568B0014ADFF /* Main.storyboard */,
+				ABC71EB61BBD0551005D902E /* MenuTableViewController.h */,
+				ABC71EB71BBD0551005D902E /* MenuTableViewController.m */,
 				ABC71EAF1BBCB0B8005D902E /* BigMapViewController.h */,
 				ABC71EB01BBCB0B8005D902E /* BigMapViewController.m */,
 				AB43EE691BBB568B0014ADFF /* Images.xcassets */,
+				ABC71EB21BBD00DA005D902E /* SWRevealViewController */,
 				AB43EE6B1BBB568B0014ADFF /* LaunchScreen.xib */,
 				AB43EE591BBB568B0014ADFF /* Supporting Files */,
 			);
@@ -150,6 +159,15 @@
 				AB43EE771BBB568B0014ADFF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ABC71EB21BBD00DA005D902E /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ABC71EB31BBD00DA005D902E /* SWRevealViewController.h */,
+				ABC71EB41BBD00DA005D902E /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
 			sourceTree = "<group>";
 		};
 		CA18AD74BAE6B05F2570134A /* Pods */ = {
@@ -301,6 +319,8 @@
 				AB43EE5C1BBB568B0014ADFF /* main.m in Sources */,
 				ABC71EB11BBCB0B8005D902E /* BigMapViewController.m in Sources */,
 				AB43EE651BBB568B0014ADFF /* DetailViewController.m in Sources */,
+				ABC71EB81BBD0551005D902E /* MenuTableViewController.m in Sources */,
+				ABC71EB51BBD00DA005D902E /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

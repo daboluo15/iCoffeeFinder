@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "SWRevealViewController.h"
 
 #define kCLIENTID @"JQONBD0F5T2H4OQLUX2ZCJCUVUGGTYS3VGJBI2ZMFWYDTVUU"
 #define kCLIENTSECRET @"YWLECSO3N21YMWJC1OKSO21JWZMYRBNLFP4TCGFAYU0LLVJ4"
@@ -54,6 +55,14 @@ CLLocationManager *locationManager;
     // update location every 600 m
     locationManager.distanceFilter = 600;
     [locationManager startUpdatingLocation];
+    
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.sidebarButton setTarget: self.revealViewController];
+        [self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
 }
 
 #pragma mark - CLLocationManagerDelegate
