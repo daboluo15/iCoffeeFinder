@@ -18,6 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.mapView.delegate = self;
     // create a region and pass it to the Map View
     MKCoordinateRegion region;
     region.center.latitude = self.coordinate.latitude;
@@ -29,11 +30,71 @@
     myCoordinate.latitude = self.coordinate.latitude;
     myCoordinate.longitude = self.coordinate.longitude;
     annotation.coordinate = myCoordinate;
+    annotation.title = @"asdfd";
+    annotation.subtitle = @"subtitle";
+    
     [self.mapView addAnnotation:annotation];
+    // show the callout by default without tapping on it
+    [self.mapView selectAnnotation:annotation animated:YES];
     
     [self.mapView setRegion:region animated:YES];
 
 }
+
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    //if annotation is the user location, return nil to get default blue-dot...
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        MKUserLocation *userLocation = annotation;
+        self.currentLocation = userLocation.coordinate;
+        return nil;
+    }
+    
+    // If no pin view already exists, create a new one.
+    
+    MKPinAnnotationView *customPinView = [[MKPinAnnotationView alloc]
+                                          initWithAnnotation:annotation reuseIdentifier:@"coffee"];
+    //MKPinAnnotationView *customPinView = (MKPinAnnotationView*)[self.mapView viewForAnnotation: annotation];
+    customPinView.pinColor = MKPinAnnotationColorRed;
+    customPinView.animatesDrop = YES;
+    customPinView.canShowCallout = YES;
+    
+    
+    // Because this is an iOS app, add the detail disclosure button to display details about the annotation in another view.
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    //[rightButton setBackgroudImage:]
+    [rightButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+    customPinView.rightCalloutAccessoryView = rightButton;
+    
+    // Add a custom image to the left side of the callout.
+    
+    UIView *viewLeftAccessory = [[UIView alloc] initWithFrame:CGRectMake(0, 0, customPinView.frame.size.height, customPinView.frame.size.height)];
+    
+    UIImageView *temp=[[UIImageView alloc] initWithFrame:CGRectMake(5, 5, customPinView.frame.size.height- 10, customPinView.frame.size.height -10)];
+    temp.image = [UIImage imageNamed:@"free-vector-coffee-icon.jpg"];
+    temp.contentMode = UIViewContentModeScaleAspectFit;
+    
+    [viewLeftAccessory addSubview:temp];
+    
+    customPinView.leftCalloutAccessoryView = viewLeftAccessory;
+    
+    return customPinView;
+}
+
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    id <MKAnnotation> annotation = [view annotation];
+    if ([annotation isKindOfClass:[MKPointAnnotation class]])
+    {
+        NSLog(@"Clicked Coffee Shop");
+    }
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Disclosure Pressed" message:@"Click Cancel to Go Back" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    [alertView show];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://maps.apple.com/maps?saddr=%f,%f&daddr=%f,%f", self.currentLocation.latitude, self.currentLocation.longitude, self.coordinate.latitude, self.coordinate.longitude]];
+    
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

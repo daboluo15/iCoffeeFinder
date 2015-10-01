@@ -15,4 +15,5 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic) CLLocationCoordinate2D currentLocation;
 @end
