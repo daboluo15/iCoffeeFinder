@@ -61,10 +61,30 @@
     
     
     // Because this is an iOS app, add the detail disclosure button to display details about the annotation in another view.
+#if 0
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    //[rightButton setBackgroudImage:]
+
     [rightButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
     customPinView.rightCalloutAccessoryView = rightButton;
+#else
+    
+    
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    //UIImage *carImage = [UIImage imageNamed:@"directionGreen"];
+    UIImage *carImage = [UIImage imageNamed:@"direction"];
+    
+    if ([carImage respondsToSelector:@selector(imageWithRenderingMode:)])
+    {
+        carImage = [carImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }
+    
+    [infoButton setImage:carImage forState: UIControlStateNormal];
+    
+    infoButton.frame = CGRectMake(0, 0, 32, 32);
+    
+    customPinView.rightCalloutAccessoryView = infoButton;
+#endif
     
     // Add a custom image to the left side of the callout.
     
@@ -87,12 +107,20 @@
     {
         NSLog(@"Clicked Coffee Shop");
     }
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Disclosure Pressed" message:@"Click Cancel to Go Back" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-    [alertView show];
+#if 1
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Disclosure Pressed" message:@"Click Cancel to Go Back" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+//    [alertView show];
     
+    // call apple maps app for direction
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://maps.apple.com/maps?saddr=%f,%f&daddr=%f,%f", self.currentLocation.latitude, self.currentLocation.longitude, self.coordinate.latitude, self.coordinate.longitude]];
     
     [[UIApplication sharedApplication] openURL:url];
+#else
+    // make phone call and then come back, cannot debug in simulator
+    NSString *phoneNumber = [@"telprompt://" stringByAppendingString:@"0481215774"];
+    //NSString *phoneNumber = [@"tel://" stringByAppendingString:@"0481215774"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+#endif
 }
 
 
