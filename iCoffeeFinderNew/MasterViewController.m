@@ -64,7 +64,6 @@ CLLocationManager *locationManager;
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
-    [self loadJsonVenues];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -105,6 +104,10 @@ CLLocationManager *locationManager;
     
     //NSString *latlon = @"-37.85,145.10"; // 20 Hughes Street Burwood VIC 3125
     //NSString *section = @"coffee";
+    if (self.venueSection == nil) {
+        self.venueSection = @"coffee";
+        self.title = @"Coffee";
+    }
     NSLog(@"self.venueSection = %@", self.venueSection);
     
     self.venues = [[NSMutableArray alloc] init];
@@ -174,7 +177,7 @@ CLLocationManager *locationManager;
 
         
 //        self.weather = (NSDictionary *)responseObject;
-          self.title = @"JSON Retrieved";
+          //self.title = @"JSON Retrieved";
           [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
