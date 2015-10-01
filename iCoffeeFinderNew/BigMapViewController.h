@@ -13,4 +13,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapTypeSegmentedControl;
+
+@property (nonatomic) CLLocationCoordinate2D coordinate;
 @end

@@ -17,6 +17,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // create a region and pass it to the Map View
+    MKCoordinateRegion region;
+    region.center.latitude = self.coordinate.latitude;
+    region.center.longitude = self.coordinate.longitude;
+    region.span.latitudeDelta = 0.01;
+    region.span.longitudeDelta = 0.01;
+    MKPointAnnotation*    annotation = [[MKPointAnnotation alloc] init];
+    CLLocationCoordinate2D myCoordinate;
+    myCoordinate.latitude = self.coordinate.latitude;
+    myCoordinate.longitude = self.coordinate.longitude;
+    annotation.coordinate = myCoordinate;
+    [self.mapView addAnnotation:annotation];
+    
+    [self.mapView setRegion:region animated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +56,8 @@
             break;
     }
 }
+
+
 
 /*
 #pragma mark - Navigation

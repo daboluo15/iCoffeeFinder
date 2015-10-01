@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "BigMapViewController.h"
 
 @interface DetailViewController ()
 
@@ -99,6 +100,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"detailedMap"]) {
+        BigMapViewController *bigMapViewController = [segue destinationViewController];
+        bigMapViewController.coordinate = self.coordinate;
+    }
 }
 
 @end
