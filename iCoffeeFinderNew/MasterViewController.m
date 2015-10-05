@@ -240,8 +240,15 @@ CLLocationManager *locationManager;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     //NSDate *object = self.objects[indexPath.row];
+    //This allows for multiple lines
+    cell.textLabel.numberOfLines = 0;
+    //This makes your label wrap words as they reach the end of a line
+    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.textLabel.text = [[self.venues objectAtIndex:indexPath.row] objectForKey:@"name"];
     NSString *addressAndDistance = [NSString stringWithFormat:@"%@    %@m", [[self.venues objectAtIndex:indexPath.row] objectForKey:@"address"], [[self.venues objectAtIndex:indexPath.row] objectForKey:@"distance"]];
+    cell.detailTextLabel.numberOfLines = 0;
+    //This makes your label wrap words as they reach the end of a line
+    cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.detailTextLabel.text = addressAndDistance;
     
     NSString *photoLink = [[self.venues objectAtIndex:indexPath.row] objectForKey:@"photoLink"];
