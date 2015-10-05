@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
+@property (weak, nonatomic) IBOutlet UIView *textView;
+
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 
 @end

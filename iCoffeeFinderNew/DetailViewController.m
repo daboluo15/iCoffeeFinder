@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "BigMapViewController.h"
+#import "HCSStarRatingView.h"
 
 @interface DetailViewController ()
 
@@ -57,6 +58,14 @@
         }
     });
     
+    // set imageview round corner
+    self.imageView.layer.cornerRadius = 10.0;
+    self.imageView.layer.masksToBounds = YES;
+    //And to add a border:
+    
+    self.imageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.imageView.layer.borderWidth = 2.0;
+    
     // create a region and pass it to the Map View
     MKCoordinateRegion region;
     region.center.latitude = self.coordinate.latitude;
@@ -86,6 +95,37 @@
     singleTap.numberOfTouchesRequired = 1;
     [singleTap requireGestureRecognizerToFail: doubleTap];
     [self.mapView addGestureRecognizer:singleTap];
+    
+    // set imageview round corner
+    self.mapView.layer.cornerRadius = 10.0;
+    self.mapView.layer.masksToBounds = YES;
+    //And to add a border:
+    
+    self.mapView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.mapView.layer.borderWidth = 2.0;
+    
+    self.textView.backgroundColor = [UIColor whiteColor];
+    self.textView.layer.cornerRadius = 10.0;
+    self.textView.layer.masksToBounds = YES;
+    self.textView.layer.borderWidth = 2.0;
+    self.textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(17, 100, 200, 50)];
+    starRatingView.maximumValue = 10;
+    starRatingView.minimumValue = 0;
+    starRatingView.allowsHalfStars = YES;
+    starRatingView.accurateHalfStars = YES;
+    starRatingView.value = 8.5;
+    starRatingView.emptyStarImage = [UIImage imageNamed:@"star_off"];
+    starRatingView.halfStarImage = [UIImage imageNamed:@"star_half"]; // optional
+    starRatingView.filledStarImage = [UIImage imageNamed:@"star"];
+    starRatingView.tintColor = [UIColor redColor];
+    [self.textView addSubview:starRatingView];
+    
+}
+
+- (IBAction)didChangeValue:(HCSStarRatingView *)sender {
+    NSLog(@"Changed rating to %.1f", sender.value);
 }
 
 - (void)handleGesture:(UIGestureRecognizer *)gestureRecognizer

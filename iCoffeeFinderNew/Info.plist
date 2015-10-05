@@ -30,6 +30,8 @@
 	<string>Location is required to find out where you are</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Location is required to find out where you are</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

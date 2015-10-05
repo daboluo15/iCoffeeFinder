@@ -257,7 +257,7 @@ CLLocationManager *locationManager;
         if (imageData != nil) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 // 4. Set image in cell
-                CGSize itemSize = CGSizeMake(32, 32);
+                CGSize itemSize = CGSizeMake(60, 60);
                 UIGraphicsBeginImageContext(itemSize);
                 
                 UIImage *thumbnail = [UIImage imageWithData:imageData];
@@ -273,8 +273,16 @@ CLLocationManager *locationManager;
             });
         }
     });
+    
+    [cell.contentView.layer setCornerRadius:7.0f];
+    [cell.contentView.layer setMasksToBounds:YES];
 
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // TODO: Determine cell height based on screen
+    return 80;
 }
 
 //- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
