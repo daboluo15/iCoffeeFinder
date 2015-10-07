@@ -148,6 +148,8 @@
     [scrollview addSubview:self.myMapView];
     [scrollview addSubview:self.myTextView];
     [self.view addSubview:scrollview];
+    
+    self.title = self.shopName;
 #endif
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -216,6 +218,8 @@
     self.textView.layer.masksToBounds = YES;
     self.textView.layer.borderWidth = 2.0;
     self.textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    
     
 #endif
     
