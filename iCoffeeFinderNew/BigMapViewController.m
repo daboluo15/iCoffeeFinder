@@ -30,8 +30,8 @@
     myCoordinate.latitude = self.coordinate.latitude;
     myCoordinate.longitude = self.coordinate.longitude;
     annotation.coordinate = myCoordinate;
-    annotation.title = @"asdfd";
-    annotation.subtitle = @"subtitle";
+    annotation.title = self.shopName;
+    annotation.subtitle = self.address;
     self.title = self.shopName;
     
     [self.mapView addAnnotation:annotation];

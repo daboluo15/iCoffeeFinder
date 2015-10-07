@@ -19,6 +19,11 @@
 @property (nonatomic) NSString *shopName;
 @property (nonatomic) NSNumber *rating;
 @property (nonatomic) NSString *tipsText;
+
+@property (nonatomic) UIImageView *myImageView;
+@property (nonatomic) MKMapView *myMapView;
+@property (nonatomic) UIView *myTextView;
+
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
