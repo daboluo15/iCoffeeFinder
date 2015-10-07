@@ -19,6 +19,7 @@
 		AB43EE831BBBA30A0014ADFF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB43EE821BBBA30A0014ADFF /* MapKit.framework */; };
 		AB43EE851BBBACDE0014ADFF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB43EE841BBBACDE0014ADFF /* CoreLocation.framework */; };
 		AB47E2F01BC21DB30017033F /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB47E2EF1BC21DB30017033F /* HCSStarRatingView.m */; };
+		AB47E3311BC48D530017033F /* VenueEntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB47E3301BC48D530017033F /* VenueEntryTableViewCell.m */; };
 		ABC71EB11BBCB0B8005D902E /* BigMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC71EB01BBCB0B8005D902E /* BigMapViewController.m */; };
 		ABC71EB51BBD00DA005D902E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC71EB41BBD00DA005D902E /* SWRevealViewController.m */; };
 		ABC71EB81BBD0551005D902E /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC71EB71BBD0551005D902E /* MenuTableViewController.m */; };
@@ -55,6 +56,8 @@
 		AB43EE841BBBACDE0014ADFF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AB47E2EE1BC21DB30017033F /* HCSStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSStarRatingView.h; sourceTree = "<group>"; };
 		AB47E2EF1BC21DB30017033F /* HCSStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSStarRatingView.m; sourceTree = "<group>"; };
+		AB47E32F1BC48D530017033F /* VenueEntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueEntryTableViewCell.h; sourceTree = "<group>"; };
+		AB47E3301BC48D530017033F /* VenueEntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueEntryTableViewCell.m; sourceTree = "<group>"; };
 		ABC71EAF1BBCB0B8005D902E /* BigMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigMapViewController.h; sourceTree = "<group>"; };
 		ABC71EB01BBCB0B8005D902E /* BigMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigMapViewController.m; sourceTree = "<group>"; };
 		ABC71EB31BBD00DA005D902E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 				AB43EE631BBB568B0014ADFF /* DetailViewController.h */,
 				AB43EE641BBB568B0014ADFF /* DetailViewController.m */,
 				AB43EE661BBB568B0014ADFF /* Main.storyboard */,
+				AB47E32F1BC48D530017033F /* VenueEntryTableViewCell.h */,
+				AB47E3301BC48D530017033F /* VenueEntryTableViewCell.m */,
 				ABC71EB61BBD0551005D902E /* MenuTableViewController.h */,
 				AB47E2F11BC23AF70017033F /* HCSStarRatingView */,
 				ABC71EB71BBD0551005D902E /* MenuTableViewController.m */,
@@ -327,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB47E3311BC48D530017033F /* VenueEntryTableViewCell.m in Sources */,
 				AB43EE5F1BBB568B0014ADFF /* AppDelegate.m in Sources */,
 				AB43EE621BBB568B0014ADFF /* MasterViewController.m in Sources */,
 				AB43EE5C1BBB568B0014ADFF /* main.m in Sources */,

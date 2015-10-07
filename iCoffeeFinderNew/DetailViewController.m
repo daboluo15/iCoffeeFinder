@@ -110,12 +110,27 @@
     self.textView.layer.borderWidth = 2.0;
     self.textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
-    HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(17, 100, 200, 50)];
+    self.name.numberOfLines = 0;
+    //This makes your label wrap words as they reach the end of a line
+    self.name.lineBreakMode = UILineBreakModeWordWrap;
+
+    self.name.text = self.shopName;
+    
+    self.address.numberOfLines = 0;
+    self.address.lineBreakMode = UILineBreakModeWordWrap;
+    self.address.text = self.detailedAddress;
+    
+    self.tips.numberOfLines = 0;
+    self.tips.lineBreakMode = UILineBreakModeWordWrap;
+    self.tips.text = [NSString stringWithFormat:@"Tips: %@", self.tipsText];
+    
+    HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(62, 78, 200, 50)];
     starRatingView.maximumValue = 10;
     starRatingView.minimumValue = 0;
     starRatingView.allowsHalfStars = YES;
     starRatingView.accurateHalfStars = YES;
-    starRatingView.value = 8.5;
+    //starRatingView.value = 8.5;
+    starRatingView.value = [self.rating floatValue];
     starRatingView.emptyStarImage = [UIImage imageNamed:@"star_off"];
     starRatingView.halfStarImage = [UIImage imageNamed:@"star_half"]; // optional
     starRatingView.filledStarImage = [UIImage imageNamed:@"star"];
@@ -148,6 +163,7 @@
     if ([[segue identifier] isEqualToString:@"detailedMap"]) {
         BigMapViewController *bigMapViewController = [segue destinationViewController];
         bigMapViewController.coordinate = self.coordinate;
+        bigMapViewController.shopName = self.shopName;
     }
 }
 

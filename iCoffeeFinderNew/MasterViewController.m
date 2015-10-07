@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "VenueEntryTableViewCell.h"
 #import "SWRevealViewController.h"
 
 #define kCLIENTID @"JQONBD0F5T2H4OQLUX2ZCJCUVUGGTYS3VGJBI2ZMFWYDTVUU"
@@ -63,6 +64,17 @@ CLLocationManager *locationManager;
         [self.sidebarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+    
+    // remove the seperator between two cell
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    //self.parentViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"common_bg"]];
+    self.parentViewController.view.backgroundColor = [UIColor colorWithRed:224.0/255.0 green:224.0/255.0 blue:224.0/255.0 alpha:1.0];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    
+    // set the small egde below the navigation header and the first tableview Cell
+    UIEdgeInsets inset = UIEdgeInsetsMake(5, 0, 0, 0);
+    self.tableView.contentInset = inset;
     
 }
 
@@ -136,6 +148,8 @@ CLLocationManager *locationManager;
             NSDictionary *venue = [result objectForKey:@"venue"];
             NSLog(@"venue name = %@", [venue objectForKey:@"name"]);
             NSString *name = [venue objectForKey:@"name"];
+            NSNumber *rating = [venue objectForKey:@"rating"];
+            
             NSDictionary *location = [venue objectForKey:@"location"];
             NSString *address = [NSString stringWithFormat:@"%@, %@ %@ %@", [location objectForKey:@"address"], [location objectForKey:@"city"], [location objectForKey:@"state"], [location objectForKey:@"postalCode"]];
             NSString *distance = [location objectForKey:@"distance"];
@@ -157,12 +171,32 @@ CLLocationManager *locationManager;
             NSString *photosLink = [NSString stringWithFormat:@"%@%@x%@%@", [photos objectForKey:@"prefix"], [photos objectForKey:@"width"], [photos objectForKey:@"height"], [photos objectForKey:@"suffix"]];
             NSLog(@"photos link=%@", photosLink);
             
+            NSArray *tipsArray = [result objectForKey:@"tips"];
+            NSDictionary *tips = tipsArray[0];
+            NSString *tipsText = [tips objectForKey:@"text"];
+            
             NSMutableDictionary *venueLocal = [[NSMutableDictionary alloc] init];
-            [venueLocal setObject:name  forKey:@"name"];
-            [venueLocal setObject:distance forKey:@"distance"];
-            [venueLocal setObject:address forKey:@"address"];
-            [venueLocal setObject:coordinate forKey:@"coordinate"];
-            [venueLocal setObject:photosLink forKey:@"photoLink"];
+            if (name != nil) {
+                [venueLocal setObject:name  forKey:@"name"];
+            }
+            if (rating != nil) {
+                [venueLocal setObject:rating forKey:@"rating"];
+            }
+            if (distance != nil) {
+                [venueLocal setObject:distance forKey:@"distance"];
+            }
+            if (address != nil) {
+                [venueLocal setObject:address forKey:@"address"];
+            }
+            if (coordinate != nil) {
+                [venueLocal setObject:coordinate forKey:@"coordinate"];
+            }
+            if (photosLink != nil) {
+                [venueLocal setObject:photosLink forKey:@"photoLink"];
+            }
+            if (tipsText != nil) {
+                [venueLocal setObject:tipsText forKey:@"tips"];
+            }
             [self.venues addObject:venueLocal];
             
         }
@@ -216,13 +250,18 @@ CLLocationManager *locationManager;
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         //NSDate *object = self.objects[indexPath.row];
-        NSDictionary *object = self.venues[indexPath.row];
-        
-        DetailViewController* detailedViewController = [segue destinationViewController];
-        detailedViewController.detailedImageLink = [object objectForKey:@"photoLink"];
-        detailedViewController.detailedAddress = [object objectForKey:@"address"];
-        detailedViewController.coordinate = [[object objectForKey:@"coordinate"] coordinate];
-        detailedViewController.shopName = [object objectForKey:@"name"];
+        if (indexPath.row <= self.venues.count) {
+            NSDictionary *object = self.venues[indexPath.row];
+            
+            DetailViewController* detailedViewController = [segue destinationViewController];
+            detailedViewController.detailedImageLink = [object objectForKey:@"photoLink"];
+            detailedViewController.detailedAddress = [object objectForKey:@"address"];
+            detailedViewController.coordinate = [[object objectForKey:@"coordinate"] coordinate];
+            detailedViewController.shopName = [object objectForKey:@"name"];
+            detailedViewController.rating = [object objectForKey:@"rating"];
+            detailedViewController.tipsText = [object objectForKey:@"tips"];
+            
+        }
     }
 }
 
@@ -237,23 +276,25 @@ CLLocationManager *locationManager;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    VenueEntryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     //NSDate *object = self.objects[indexPath.row];
     //This allows for multiple lines
-    cell.textLabel.numberOfLines = 0;
+    cell.name.numberOfLines = 0;
     //This makes your label wrap words as they reach the end of a line
-    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.textLabel.text = [[self.venues objectAtIndex:indexPath.row] objectForKey:@"name"];
-    NSString *addressAndDistance = [NSString stringWithFormat:@"%@    %@m", [[self.venues objectAtIndex:indexPath.row] objectForKey:@"address"], [[self.venues objectAtIndex:indexPath.row] objectForKey:@"distance"]];
-    cell.detailTextLabel.numberOfLines = 0;
+    cell.name.lineBreakMode = UILineBreakModeWordWrap;
+    cell.name.text = [[self.venues objectAtIndex:indexPath.row] objectForKey:@"name"];
+    NSString *addressAndDistance = [NSString stringWithFormat:@"%@", [[self.venues objectAtIndex:indexPath.row] objectForKey:@"address"]];
+    cell.address.numberOfLines = 0;
     //This makes your label wrap words as they reach the end of a line
-    cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.detailTextLabel.text = addressAndDistance;
+    cell.address.lineBreakMode = UILineBreakModeWordWrap;
+    cell.address.text = addressAndDistance;
+    NSString *distance = [NSString stringWithFormat:@"%@ m", [[self.venues objectAtIndex:indexPath.row] objectForKey:@"distance"]];
+    cell.distance.text = distance;
     
     NSString *photoLink = [[self.venues objectAtIndex:indexPath.row] objectForKey:@"photoLink"];
     NSURL *photoURL = [NSURL URLWithString:photoLink];
-    
+
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
     dispatch_async(queue, ^{
@@ -264,7 +305,7 @@ CLLocationManager *locationManager;
         if (imageData != nil) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 // 4. Set image in cell
-                CGSize itemSize = CGSizeMake(60, 60);
+                CGSize itemSize = CGSizeMake(80, 80);
                 UIGraphicsBeginImageContext(itemSize);
                 
                 UIImage *thumbnail = [UIImage imageWithData:imageData];
@@ -272,24 +313,38 @@ CLLocationManager *locationManager;
                 [thumbnail drawInRect:imageRect];
                 
                 // set round corner
-                cell.imageView.layer.masksToBounds = YES;
-                cell.imageView.layer.cornerRadius = 10.0;
-                cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+                cell.myImageView.layer.masksToBounds = YES;
+                cell.myImageView.layer.cornerRadius = 10.0;
+                cell.myImageView.image = UIGraphicsGetImageFromCurrentImageContext();
                 UIGraphicsEndImageContext();
                 [cell setNeedsLayout];
             });
         }
     });
-    
+
     [cell.contentView.layer setCornerRadius:7.0f];
     [cell.contentView.layer setMasksToBounds:YES];
+    
+    UIImage *background = [UIImage imageNamed:@"rectangle-fat"];
+    UIImageView *cellImageBackgroundView = [[UIImageView alloc] initWithFrame:cell.bounds];
+    cellImageBackgroundView.image = background;
+    cell.backgroundView = cellImageBackgroundView;
+    
+    UIImage *selectedBackGround = [UIImage imageNamed:@"rectangle-fat-gray"];
+    UIImageView *cellSelectedView = [[UIImageView alloc] initWithFrame:cell.bounds];
+    cellSelectedView.image = selectedBackGround;
+    cell.selectedBackgroundView = cellSelectedView;
+    
+    
+    cell.backgroundColor = [UIColor clearColor];
+
 
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     // TODO: Determine cell height based on screen
-    return 80;
+    return 120;
 }
 
 //- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

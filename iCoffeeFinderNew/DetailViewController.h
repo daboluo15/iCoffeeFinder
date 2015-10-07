@@ -17,10 +17,15 @@
 @property (nonatomic) NSString *phoneNumber;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic) NSString *shopName;
+@property (nonatomic) NSNumber *rating;
+@property (nonatomic) NSString *tipsText;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *address;
+@property (weak, nonatomic) IBOutlet UILabel *tips;
 
 @property (weak, nonatomic) IBOutlet UIView *textView;
 

@@ -32,6 +32,7 @@
     annotation.coordinate = myCoordinate;
     annotation.title = @"asdfd";
     annotation.subtitle = @"subtitle";
+    self.title = self.shopName;
     
     [self.mapView addAnnotation:annotation];
     // show the callout by default without tapping on it
