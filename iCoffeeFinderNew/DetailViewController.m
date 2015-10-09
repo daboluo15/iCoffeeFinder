@@ -72,7 +72,7 @@
     [rating setFont:[UIFont systemFontOfSize:12]];
     rating.text = @"Rating:";
     
-    UILabel *tips = [[UILabel alloc] initWithFrame:CGRectMake(5, 90, self.view.frame.size.width - 30, 40)];
+    UILabel *tips = [[UILabel alloc] initWithFrame:CGRectMake(5, 90, self.view.frame.size.width - 30, 100)];
     tips.numberOfLines = 0;
     tips.lineBreakMode = UILineBreakModeWordWrap;
     [tips setTextColor:[UIColor darkGrayColor]];
@@ -96,11 +96,13 @@
     self.myImageView.layer.borderWidth = 2.0;
     
     // create a region and pass it to the Map View
-    MKCoordinateRegion region;
-    region.center.latitude = self.coordinate.latitude;
-    region.center.longitude = self.coordinate.longitude;
-    region.span.latitudeDelta = 0.01;
-    region.span.longitudeDelta = 0.01;
+//    MKCoordinateRegion region;
+//    region.center.latitude = self.coordinate.latitude;
+//    region.center.longitude = self.coordinate.longitude;
+//    region.span.latitudeDelta = 0.1;
+//    region.span.longitudeDelta = 0.1;
+
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance (self.coordinate, [self.distance floatValue] + 1000, [self.distance floatValue] + 1000);
     MKPointAnnotation*    annotation = [[MKPointAnnotation alloc] init];
     CLLocationCoordinate2D myCoordinate;
     myCoordinate.latitude = self.coordinate.latitude;
@@ -264,6 +266,18 @@
 
 }
 
+//- (void)mapView:(MKMapView *)aMapView didUpdateUserLocation:(MKUserLocation *)aUserLocation {
+//    MKCoordinateRegion region;
+//    CLLocationCoordinate2D userLocation;
+//    userLocation.latitude = aUserLocation.coordinate.latitude;
+//    userLocation.longitude = aUserLocation.coordinate.longitude;
+//    region.center.latitude = self.coordinate.latitude;
+//    region.center.longitude = self.coordinate.longitude;
+//    region.span.latitudeDelta = fabs(userLocation.latitude - self.coordinate.latitude) + 0.01;
+//    region.span.longitudeDelta = fabs(userLocation.longitude - self.coordinate.longitude) + 0.01;
+//    [aMapView setRegion:region animated:YES];
+//}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -278,6 +292,7 @@
         bigMapViewController.coordinate = self.coordinate;
         bigMapViewController.shopName = self.shopName;
         bigMapViewController.address = self.detailedAddress;
+        bigMapViewController.distance = self.distance;
     }
 }
 

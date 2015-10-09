@@ -74,21 +74,21 @@
         switch (indexPath.row) {
             case 1:
                 venueController.venueSection = @"food";
-                venueController.title = @"food";
+                venueController.title = @"Food";
                 break;
                 
             case 2:
                 venueController.venueSection = @"coffee";
-                venueController.title = @"coffee";
+                venueController.title = @"Coffee";
                 break;
             case 3:
                 venueController.venueSection = @"drinks";
-                venueController.title = @"drinks";
+                venueController.title = @"Drinks";
                 break;
                 
             default:
                 venueController.venueSection = @"coffee";
-                venueController.title = @"coffee";
+                venueController.title = @"Coffee";
 
                 break;
         }

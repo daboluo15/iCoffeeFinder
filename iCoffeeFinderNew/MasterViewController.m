@@ -136,6 +136,9 @@ CLLocationManager *locationManager;
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
+        // clear the old value
+        [self.venues removeAllObjects];
+        
         // 3
         NSDictionary *jsonDict = (NSDictionary *)responseObject;
         NSLog(@"jsonDict = %@", jsonDict);
@@ -260,6 +263,7 @@ CLLocationManager *locationManager;
             detailedViewController.shopName = [object objectForKey:@"name"];
             detailedViewController.rating = [object objectForKey:@"rating"];
             detailedViewController.tipsText = [object objectForKey:@"tips"];
+            detailedViewController.distance = [object objectForKey:@"distance"];
             
         }
     }

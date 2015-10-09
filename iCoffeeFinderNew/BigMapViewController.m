@@ -20,11 +20,13 @@
     
     self.mapView.delegate = self;
     // create a region and pass it to the Map View
-    MKCoordinateRegion region;
+    //MKCoordinateRegion region;
+    
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance (self.coordinate, [self.distance floatValue] + 1000, [self.distance floatValue] + 1000);
     region.center.latitude = self.coordinate.latitude;
     region.center.longitude = self.coordinate.longitude;
-    region.span.latitudeDelta = 0.01;
-    region.span.longitudeDelta = 0.01;
+//    region.span.latitudeDelta = 0.1;
+//    region.span.longitudeDelta = 0.1;
     MKPointAnnotation*    annotation = [[MKPointAnnotation alloc] init];
     CLLocationCoordinate2D myCoordinate;
     myCoordinate.latitude = self.coordinate.latitude;
@@ -129,6 +131,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#if 0
+- (void)mapView:(MKMapView *)aMapView didUpdateUserLocation:(MKUserLocation *)aUserLocation {
+    MKCoordinateRegion region;
+    CLLocationCoordinate2D userLocation;
+    userLocation.latitude = aUserLocation.coordinate.latitude;
+    userLocation.longitude = aUserLocation.coordinate.longitude;
+    region.center.latitude = self.coordinate.latitude;
+    region.center.longitude = self.coordinate.longitude;
+    region.span.latitudeDelta = fabs(userLocation.latitude - self.coordinate.latitude) + 0.1;
+    region.span.longitudeDelta = fabs(userLocation.longitude - self.coordinate.longitude) + 0.1;
+    [aMapView setRegion:region animated:YES];
+}
+#endif
 
 - (IBAction)changeMapStyle:(id)sender {
     

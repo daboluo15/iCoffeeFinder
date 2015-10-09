@@ -18,6 +18,7 @@
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic) NSString *shopName;
 @property (nonatomic) NSNumber *rating;
+@property (nonatomic) NSNumber *distance;
 @property (nonatomic) NSString *tipsText;
 
 @property (nonatomic) UIImageView *myImageView;

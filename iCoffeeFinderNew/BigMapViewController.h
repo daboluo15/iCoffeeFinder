@@ -18,4 +18,5 @@
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
 @property (nonatomic) NSString *shopName;
 @property (nonatomic) NSString *address;
+@property (nonatomic) NSNumber *distance;
 @end
