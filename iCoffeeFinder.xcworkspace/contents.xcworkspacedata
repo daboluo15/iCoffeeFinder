@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:iCoffeeFinderNew.xcodeproj">
+      location = "group:/Users/mahuiye/MyiOSApp/MyTests/iCoffeeFinder/iCoffeeFinder.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

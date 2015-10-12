@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AB43EE551BBB568B0014ADFF"
-               BuildableName = "iCoffeeFinderNew.app"
-               BlueprintName = "iCoffeeFinderNew"
-               ReferencedContainer = "container:iCoffeeFinderNew.xcodeproj">
+               BuildableName = "iCoffeeFinder.app"
+               BlueprintName = "iCoffeeFinder"
+               ReferencedContainer = "container:iCoffeeFinder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,27 +29,27 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AB43EE711BBB568B0014ADFF"
-               BuildableName = "iCoffeeFinderNewTests.xctest"
-               BlueprintName = "iCoffeeFinderNewTests"
-               ReferencedContainer = "container:iCoffeeFinderNew.xcodeproj">
+               BuildableName = "iCoffeeFinder.xctest"
+               BlueprintName = "iCoffeeFinderTests"
+               ReferencedContainer = "container:iCoffeeFinder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AB43EE711BBB568B0014ADFF"
-               BuildableName = "iCoffeeFinderNewTests.xctest"
-               BlueprintName = "iCoffeeFinderNewTests"
-               ReferencedContainer = "container:iCoffeeFinderNew.xcodeproj">
+               BuildableName = "iCoffeeFinder.xctest"
+               BlueprintName = "iCoffeeFinderTests"
+               ReferencedContainer = "container:iCoffeeFinder.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,48 +57,51 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB43EE551BBB568B0014ADFF"
-            BuildableName = "iCoffeeFinderNew.app"
-            BlueprintName = "iCoffeeFinderNew"
-            ReferencedContainer = "container:iCoffeeFinderNew.xcodeproj">
+            BuildableName = "iCoffeeFinder.app"
+            BlueprintName = "iCoffeeFinder"
+            ReferencedContainer = "container:iCoffeeFinder.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB43EE551BBB568B0014ADFF"
-            BuildableName = "iCoffeeFinderNew.app"
-            BlueprintName = "iCoffeeFinderNew"
-            ReferencedContainer = "container:iCoffeeFinderNew.xcodeproj">
+            BuildableName = "iCoffeeFinder.app"
+            BlueprintName = "iCoffeeFinder"
+            ReferencedContainer = "container:iCoffeeFinder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB43EE551BBB568B0014ADFF"
-            BuildableName = "iCoffeeFinderNew.app"
-            BlueprintName = "iCoffeeFinderNew"
-            ReferencedContainer = "container:iCoffeeFinderNew.xcodeproj">
+            BuildableName = "iCoffeeFinder.app"
+            BlueprintName = "iCoffeeFinder"
+            ReferencedContainer = "container:iCoffeeFinder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
