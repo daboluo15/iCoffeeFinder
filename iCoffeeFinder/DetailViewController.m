@@ -10,7 +10,6 @@
 #import "BigMapViewController.h"
 #import "HCSStarRatingView.h"
 
-
 @interface DetailViewController ()
 
 @end
