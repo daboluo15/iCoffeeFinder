@@ -141,7 +141,6 @@
 				AB43EE6B1BBB568B0014ADFF /* LaunchScreen.xib */,
 				AB43EE591BBB568B0014ADFF /* Supporting Files */,
 			);
-			name = iCoffeeFinder;
 			path = iCoffeeFinder;
 			sourceTree = "<group>";
 		};
@@ -160,7 +159,6 @@
 				AB43EE781BBB568B0014ADFF /* iCoffeeFinderTests.m */,
 				AB43EE761BBB568B0014ADFF /* Supporting Files */,
 			);
-			name = iCoffeeFinderTests;
 			path = iCoffeeFinderTests;
 			sourceTree = "<group>";
 		};
@@ -474,6 +472,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iCoffeeFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bobbygaoapp.iCoffeeFinder;
 				PRODUCT_NAME = iCoffeeFinder;
 				PROVISIONING_PROFILE = "";
 			};
@@ -488,6 +487,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iCoffeeFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bobbygaoapp.iCoffeeFinder;
 				PRODUCT_NAME = iCoffeeFinder;
 				PROVISIONING_PROFILE = "";
 			};
