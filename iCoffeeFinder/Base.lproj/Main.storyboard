@@ -158,7 +158,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jL-gg-tKF">
-                                            <rect key="frame" x="113" y="78" width="443" height="21"/>
+                                            <rect key="frame" x="113" y="72" width="443" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -183,8 +183,8 @@
                                     <constraints>
                                         <constraint firstItem="1jL-gg-tKF" firstAttribute="leading" secondItem="PmE-HA-v8f" secondAttribute="leading" id="1Xn-jb-gKm"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ETb-qo-o6o" secondAttribute="trailing" constant="-25" id="2n0-hV-ShH"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="1jL-gg-tKF" secondAttribute="bottom" constant="12" id="3Aq-Bf-brH"/>
-                                        <constraint firstItem="1jL-gg-tKF" firstAttribute="top" secondItem="ETb-qo-o6o" secondAttribute="bottom" constant="3" id="57e-dC-0ip"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="1jL-gg-tKF" secondAttribute="bottom" constant="-2" id="3Aq-Bf-brH"/>
+                                        <constraint firstItem="1jL-gg-tKF" firstAttribute="top" secondItem="ETb-qo-o6o" secondAttribute="bottom" constant="-3" id="57e-dC-0ip"/>
                                         <constraint firstItem="ETb-qo-o6o" firstAttribute="top" secondItem="d3P-M7-ByW" secondAttribute="topMargin" constant="36" id="6ci-Ec-dVH"/>
                                         <constraint firstItem="d54-sD-nxk" firstAttribute="top" secondItem="d3P-M7-ByW" secondAttribute="topMargin" constant="2" id="CiT-dJ-lDB"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="PmE-HA-v8f" secondAttribute="trailing" constant="-11" id="Rd7-qx-d87"/>
@@ -193,7 +193,7 @@
                                         <constraint firstItem="1jL-gg-tKF" firstAttribute="leading" secondItem="d54-sD-nxk" secondAttribute="trailing" constant="13" id="jN9-z6-BBH"/>
                                         <constraint firstItem="PmE-HA-v8f" firstAttribute="top" secondItem="d3P-M7-ByW" secondAttribute="topMargin" constant="-1" id="nd4-a4-oKj"/>
                                         <constraint firstItem="ETb-qo-o6o" firstAttribute="centerY" secondItem="d3P-M7-ByW" secondAttribute="centerY" id="qla-5S-YHo"/>
-                                        <constraint firstItem="1jL-gg-tKF" firstAttribute="top" secondItem="PmE-HA-v8f" secondAttribute="bottom" constant="16" id="rva-xI-8WL"/>
+                                        <constraint firstItem="1jL-gg-tKF" firstAttribute="top" secondItem="PmE-HA-v8f" secondAttribute="bottom" constant="10" id="rva-xI-8WL"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
