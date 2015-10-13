@@ -72,7 +72,7 @@
     [rating setFont:[UIFont systemFontOfSize:12]];
     rating.text = @"Rating:";
     
-    UILabel *tips = [[UILabel alloc] initWithFrame:CGRectMake(5, 90, self.view.frame.size.width - 30, 100)];
+    UILabel *tips = [[UILabel alloc] initWithFrame:CGRectMake(5, 70, self.view.frame.size.width - 30, 100)];
     tips.numberOfLines = 0;
     tips.lineBreakMode = UILineBreakModeWordWrap;
     [tips setTextColor:[UIColor darkGrayColor]];
